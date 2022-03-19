@@ -22,12 +22,7 @@ export function Navbar() {
           </span>
         </div>
         <Link to="/" className="nav__logo">
-          <img
-            width="150"
-            className="signature"
-            src={signature}
-            alt="Jake's Signature"
-          />
+          <img className="signature" src={signature} alt="Jake's Signature" />
         </Link>
 
         <div className="nav__user-nav--right">

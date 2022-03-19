@@ -56,12 +56,14 @@ export default function App() {
           </video>
         </div>
         <div className="background-box" />
-        <Navbar />
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-        <Footer />
+        <div className="content-wrapper">
+          <Navbar />
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+          <Footer />
+        </div>
       </body>
     </html>
   );

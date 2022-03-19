@@ -33,13 +33,13 @@
   }
 
   @media only screen and (max-width: 1100px) { 
-    .languages__card {
+    .languages__section {
       font-size: .7rem;
     }
   }
 
   @media only screen and (max-width: 847px) {
-    .languages__card {
+    .languages__section {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
