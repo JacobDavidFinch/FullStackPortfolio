@@ -1,32 +1,27 @@
-const express = require('express');
-const app = express();
-require('dotenv').config()
-// express doesn't know how to handle cookies, this helps
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-// const keys = require('./config/keys');
-const cors = require('cors');
-// these are just require statements because we need to link them to the index.js but we don't need to use them in any of the code below
+const path = require("path");
+const { createRequestHandler } = require("@remix-run/netlify");
 
+const BUILD_DIR = path.join(process.cwd(), "netlify");
 
-// all app.use are middlewares that get applied to our app before the route handlers, you can also place them elsewhere if you don't want all these middlewares being used between all routes handlers
-app.use(bodyParser.json());
-app.use(morgan('combined'));
-app.use(cors());
-// app.use(require('express-session')({ secret: "fur babies", resave: true, saveUninitialized: true }));
-
-require("./email.js")(app);
-
-if (process.env.NODE_ENV === 'production') {
-  // Express will serve up production assets
-  app.use(express.static('client/build'));
-
-  // Express will serve up the index.html file if it doesn't recognize the route
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
-  });
+function purgeRequireCache() {
+  // purge require cache on requests for "server side HMR" this won't let
+  // you have in-memory objects between requests in development,
+  // netlify typically does this for you, but we've found it to be hit or
+  // miss and some times requires you to refresh the page after it auto reloads
+  // or even have to restart your server
+  for (const key in require.cache) {
+    if (key.startsWith(BUILD_DIR)) {
+      delete require.cache[key];
+    }
+  }
 }
-// whenever heroku runs our application it has the ability to inject envirnoment variables, which is herokus opportunity to send us runtime configs, this variable will run out application through heroku, however to run in dev envirnoment we need a local port (5000 here)
-const PORT = process.env.PORT || 5005;
-app.listen(PORT);
+
+exports.handler =
+  process.env.NODE_ENV === "production"
+    ? createRequestHandler({ build: require("./build") })
+    : (event, context) => {
+        purgeRequireCache();
+        return createRequestHandler({
+          build: require("./build"),
+        })(event, context);
+      };
