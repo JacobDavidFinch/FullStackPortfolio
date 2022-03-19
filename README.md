@@ -1,69 +1,53 @@
-# Full-Stack_Portfolio
-Portfolio built to highlight skills and projects worked as a full-stack developer
+# Welcome to Remix!
 
-## Motivation
-I developed this project in an attempt to build a portfolio that would stand out amoung the field. I gave it my own look and feel, seeking for a minimalistic approach. 
+- [Remix Docs](https://remix.run/docs)
 
-## Getting Started
+## Development
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes
+From your terminal:
 
-### Installing
-
-A step by step installaltion to run the app
-
-Clone the repo in your command line
-
-```
-Git Clone https://github.com/jakedykstra/Full-Stack_Portfolio.git
-```
-
-Change into project diretory 
-
-```
-cd Full-Stack_Portfolio
-```
-
-Install necessary packages from both the express server and react client package.jsons
-
-```
-npm i -g
-cd client
-npm i -g
-```
-
-Now go back to your server and create a .env file so you can use your email with the nodemailer library
-
-```
-UN = yourEmailHere
-PASS = yourPassWordHere 
-```
-
-You can now run the application 
-
-```
+```sh
 npm run dev
 ```
 
-Now to have this work with 
+This starts your app in development mode, rebuilding assets on file changes.
 
 ## Deployment
 
-Follow the link below to see live project on Heroku 
-https://devbyjake.com/
+First, build your app for production:
 
-## Libraries and 
+```sh
+npm run build
+```
 
-* React for main project 
-* React-Redux- components
-* Auth0-authentication
-* Chart.js - graphs 
-* Mongodb for database 
+Then run the app in production mode:
 
-## Built With
+```sh
+npm start
+```
 
-* [React](https://reactjs.org/) - The front-end library used
-* [Sequelize](https://www.nodemailer.com/) - Used for contact form to email follow up.
-* [jspdf](https://github.com/MrRio/jsPDF) - For pdf download
+Now you'll need to pick a host to deploy it to.
 
-**THANKS**
+### DIY
+
+If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
+
+Make sure to deploy the output of `remix build`
+
+- `build/`
+- `public/build/`
+
+### Using a Template
+
+When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
+
+```sh
+cd ..
+# create a new project, and pick a pre-configured host
+npx create-remix@latest
+cd my-new-remix-app
+# remove the new project's app (not the old one!)
+rm -rf app
+# copy your app over
+cp -R ../my-old-remix-app/app app
+```

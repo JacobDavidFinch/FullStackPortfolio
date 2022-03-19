@@ -1,0 +1,135 @@
+:root {
+  --color-primary: #00478A;
+  --color-secondary: #40454A;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+  
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+  --shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
+
+  --line: 1px solid var(--color-grey-light-2);
+}
+
+/* html {
+  min-height: calc(100%);
+} */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  z-index: -10;
+  font-size: 62.5%;
+  min-height: 100%;
+  max-height: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f6f6f6c9;
+  /* background-image: url("./Golden_Gate_Traffic.jpg"); */
+  /* opacity: .08;  */
+
+  /* position: relative; */
+}
+
+#root {
+  height: 100vh;
+}
+
+/* .background-box {
+  background-color: whitesmoke;
+  border-top: #00478A solid 2pt;
+  position: absolute;
+  top: 120%;
+  height: 120%;
+  width: 100%;
+  z-index: -1;
+} */
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.header {
+  font-family: 'Rock Salt', cursive;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 
+Landing Page ---------------------------------------------------------- */
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  color: var(--color-primary);
+  width: 70%;
+  padding-top: 100px;
+  text-align: center;
+  font-size:2.4rem;
+}
+
+.sub {
+  color: var(--color-secondary);
+  text-align: center;
+  width: 70%;
+  padding-top: 2%;
+  font-size: 1.8rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .header {
+    color: var(--color-primary);
+    width: 70%;
+    padding-top: 100px;
+    /* margin-left: 25%; */
+    text-align: center;
+    font-size:1.5rem;
+  }
+  .sub {
+    font-size: 1.4rem;
+    padding-bottom: 100px;
+  }
+
+
+}
+
+@media only screen and (max-width: 450px) {
+  .header {
+    padding-top: 100px;
+    font-size:1rem;
+  }
+
+  .sub {
+    font-size: .9em;
+  }
+  
+}
