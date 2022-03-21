@@ -1,9 +1,7 @@
 import type { ActionFunction, LinksFunction } from "remix";
-import { redirect, useActionData, Form, useTransition, json } from "remix";
+import { redirect, useActionData, Form, useTransition } from "remix";
 import styles from "~/styles/contact.css";
 import globalStyles from "~/styles/global.css";
-// const smtpTransport = require("nodemailer-smtp-transport");
-// const nodemailer = require("nodemailer");
 
 export const links: LinksFunction = () => {
   return [
@@ -20,57 +18,8 @@ export const action: ActionFunction = async ({ request }) => {
   const message = formData.get("message");
   const interest = formData.get("interest");
 
-  // const transporter = nodemailer.createTransport(
-  //   smtpTransport({
-  //     service: "gmail",
-  //     host: "smtp.gmail.com",
-  //     auth: {
-  //       user: process.env.UN,
-  //       pass: process.env.PASS,
-  //     },
-  //   })
-  // );
-
-  // transporter.verify((error: any, success: any) => {
-  //   if (error) {
-  //     console.log(error);
-  //   } else {
-  //     console.log("Server is ready to take messages");
-  //   }
-  // });
-
   const content = `name: ${name} \n email: ${email} \n message: ${message} \n interest: ${interest} `;
-  console.log(content);
-  // const notifyMe = {
-  //   from: name,
-  //   to: "JacobDavidFinch@gmail.com", //Change to email address that you want to receive messages on
-  //   subject: "New Message from Contact Form",
-  //   text: content,
-  // };
-
-  // const notifyMailer = {
-  //   from: "Jacob Dykstra",
-  //   to: email,
-  //   subject: "Expect a follow up shortly - Jacob Finch",
-  //   text: `Dear
-  //     ${name}
-  //     , \n\nThis is an automated message on behalf of Jacob Finch. Thank you for reaching out to me via my contact form on my site. Expect a follow up within one business day.
-  //     .\n\nBest, \nJacob Finch`,
-  // };
-
-  // // sending my message to client
-  // transporter.sendMail(notifyMailer);
-
-  // // sending message to me via client contact form
-  // const [err, res] = transporter.sendMail(notifyMe, (err: any, data: any) => {
-  //   if (err) {
-  //     return [err, null];
-  //   } else {
-  //     return [null, data];
-  //   }
-  // });
-
-  // if (err) return json({ errors: err });
+  console.log(`FORM CONTENT: ${content}`);
 
   return redirect(`/contact/confirmation`);
 };

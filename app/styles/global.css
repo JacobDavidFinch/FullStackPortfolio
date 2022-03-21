@@ -390,7 +390,7 @@ Navigation ---------------------------------------------------------- */
   @media only screen and (min-width: 1800px) {
     main, .card {
       width: 1200px;
-      margin: 15% auto 0;
+      margin: 10% auto 0;
     }
   
   }
